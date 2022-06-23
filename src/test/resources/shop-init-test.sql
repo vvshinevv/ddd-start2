@@ -6,7 +6,7 @@ truncate table product;
 truncate table image;
 truncate table member;
 truncate table member_authorities;
-truncate table article;
+truncate table articles;
 truncate table article_content;
 truncate table evententry;
 
@@ -72,7 +72,7 @@ insert into purchase_order values (
 );
 insert into order_line values ('ORDER-003', 0, 'prod-001', 1000, 5, 5000);
 
-insert into article (title) values ('제목');
+insert into articles (title) values ('제목');
 insert into article_content values (1, 'content', 'type');
 
 insert into evententry (type, content_type, payload, timestamp) values

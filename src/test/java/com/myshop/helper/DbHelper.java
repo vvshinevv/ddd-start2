@@ -12,8 +12,9 @@ public class DbHelper {
     }
 
     public void clear() {
+        jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY FALSE");
         jdbcTemplate.update("truncate table member");
-        jdbcTemplate.update("truncate table article");
+        jdbcTemplate.update("truncate table articles");
         jdbcTemplate.update("truncate table article_content");
         jdbcTemplate.update("truncate table purchase_order");
         jdbcTemplate.update("truncate table order_line");
@@ -21,5 +22,6 @@ public class DbHelper {
         jdbcTemplate.update("truncate table image");
         jdbcTemplate.update("truncate table category");
         jdbcTemplate.update("truncate table product_category");
+        jdbcTemplate.execute("SET REFERENTIAL_INTEGRITY TRUE");
     }
 }

@@ -76,7 +76,7 @@ create table shop.member_authorities (
   primary key (member_id, authority)
 ) character set utf8mb4;
 
-create table shop.article (
+create table shop.articles (
   id int not null auto_increment primary key,
   title varchar(255)
 ) character set utf8mb4;

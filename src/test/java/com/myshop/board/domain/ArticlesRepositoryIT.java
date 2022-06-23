@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class ArticleRepositoryIT {
+public class ArticlesRepositoryIT {
     @Autowired
     private ArticleRepository articleRepository;
     @Autowired
@@ -31,13 +31,13 @@ public class ArticleRepositoryIT {
 
     @Test
     void save() {
-        Article aritcle = new Article("title",
+        Articles aritcle = new Articles("title",
                 new ArticleContent("content", "type")
         );
         articleRepository.save(aritcle);
 
         SqlRowSet rsArticle = jdbcTemplate.queryForRowSet(
-                "select * from article where id = ?",
+                "select * from articles where id = ?",
                 aritcle.getId());
         assertThat(rsArticle.next()).isTrue();
         assertThat(rsArticle.getString("title")).isEqualTo("title");
@@ -57,14 +57,14 @@ public class ArticleRepositoryIT {
 
     @Test
     void findById() {
-        jdbcTemplate.update("insert into article values (100, 'title')");
+        jdbcTemplate.update("insert into articles values (100, 'title')");
         jdbcTemplate.update("insert into article_content values (100, 'content', 'type')");
 
-        Optional<Article> articleOpt = articleRepository.findById(100L);
+        Optional<Articles> articleOpt = articleRepository.findById(100L);
         assertThat(articleOpt).isPresent();
-        Article article = articleOpt.get();
-        assertThat(article.getTitle()).isEqualTo("title");
-        assertThat(article.getContent().getContent()).isEqualTo("content");
-        assertThat(article.getContent().getContentType()).isEqualTo("type");
+        Articles articles = articleOpt.get();
+        assertThat(articles.getTitle()).isEqualTo("title");
+        assertThat(articles.getContent().getContent()).isEqualTo("content");
+        assertThat(articles.getContent().getContentType()).isEqualTo("type");
     }
 }

@@ -6,11 +6,13 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import java.util.Objects;
 
 @Embeddable
 public class Orderer {
 
+    @Embedded
     @AttributeOverrides(
             @AttributeOverride(name = "id", column = @Column(name = "orderer_id"))
     )
@@ -18,6 +20,10 @@ public class Orderer {
 
     @Column(name = "orderer_name")
     private String name;
+
+    public void setMemberId(MemberId memberId) {
+        this.memberId = memberId;
+    }
 
     protected Orderer() {
     }

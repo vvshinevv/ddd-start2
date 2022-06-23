@@ -4,8 +4,8 @@ import org.springframework.data.repository.Repository;
 
 import java.util.Optional;
 
-public interface ArticleRepository extends Repository<Article, Long> {
-    void save(Article article);
+public interface ArticleRepository extends Repository<Articles, Long> {
+    void save(Articles articles);
 
-    Optional<Article> findById(Long id);
+    Optional<Articles> findById(Long id);
 }

@@ -8,7 +8,7 @@ truncate table product;
 truncate table image;
 truncate table member;
 truncate table member_authorities;
-truncate table article;
+truncate table articles;
 truncate table article_content;
 truncate table evententry;
 

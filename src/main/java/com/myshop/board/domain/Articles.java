@@ -3,12 +3,12 @@ package com.myshop.board.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "article")
+@Table(name = "articles")
 @SecondaryTable(
         name = "article_content",
         pkJoinColumns = @PrimaryKeyJoinColumn(name = "id")
 )
-public class Article {
+public class Articles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,10 +26,10 @@ public class Article {
     @Embedded
     private ArticleContent content;
 
-    protected Article() {
+    protected Articles() {
     }
 
-    public Article(String title, ArticleContent content) {
+    public Articles(String title, ArticleContent content) {
         this.title = title;
         this.content = content;
     }
